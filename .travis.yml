@@ -14,5 +14,5 @@ deploy:
   api_key:
     secure: m2n+BRB8HqQP4CvGD15qftgb+rfVNFaJhZOQzhSjO9iRMFsGJc/v99o+kZZOVDto5Uz9mN+XI9apQHxf+3+2D0808xKLPRy5QFLO/eYwWBBjMmKexjEPT5kxrwoxyTMvxZIfJyM9y2u3mreeeOdINjuCqOdkXHsDWUOH9XkzWAlPhs5UMB604EdISNeBUdTS2Bp1C9BTY0xvqd5Fjz9T92pGdeg3U7oqE3R1jh6osd7JyWUKhP2/efsKyuzOGaMOo+iROHCzzPEPCiyqWuAkl8tit/jx9eF1CPM5xXlzcjinz5FB2TTAX8rnoPh++mxaNzXTd7o8hxCn0BfyT53NyynrR8X+6/etAQ1fyG8zo8ZTfAJfivNFD51+79GSPBixYwM+AUMwxWy9XhCU7v7BHkoCl3R0wnJk85AxoZ7h4RTqjsfc+q2F7ZGKejNBx2c7Yl7hFdCstk6zEemLa941r07XcFAILfB4B8KQ98k8tDlSA46TaHWXDh+5EjFK2uaKbid8AL1CYS2ymQoxAsrd34M9qH4p2qNoRLc4WO3ed1uRqIM13Nxc2zVvSThUEYmXMMq3nA/1gLyIO0GgaFMSp9ucYIat7JY1yhFrH4UU6cUntwhNoKU6wydQ2K5KXr7RUHGY2fJobm56ezvj7ytfCRDG65fTXmkukz+SgV0dKVg=
   app: safonova-lab2
-  run: python manage.py loaddata products.yaml && python manage.py migrate
+  run: python manage.py migrate && python manage.py loaddata products.yaml 
   on: master
