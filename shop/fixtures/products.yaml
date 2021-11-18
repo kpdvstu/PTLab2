@@ -1,15 +1,20 @@
 - model: shop.product
   pk: 1
   fields:
-    name: Стол
-    price: 2000
+    name: Ручка Гелевая
+    price: 500
 - model: shop.product
   pk: 2
   fields:
-    name: Стул
-    price: 1000
+    name: Ручка Шариковая
+    price: 200
 - model: shop.product
   pk: 3
   fields:
-    name: Табурет
-    price: 500
+    name: Дырокол
+    price: 700
+- model: shop.product
+  pk: 4
+  fields:
+    name: Линейка
+    price: 100

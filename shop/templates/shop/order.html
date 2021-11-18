@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Товары</title>
+</head>
+<body>
+    <div>
+        <p>Уважаемый(ая) {{ purchase.person }}</p>
+
+        <p>Спасибо за покупку!</p>
+
+        <p>Вы купили: {{ product.name }}</p>
+
+        <p>Цена: {{ product.price }}</p>
+
+        <p>Скидка: {{ purchase.discount }}%</p>
+
+        <p>Сумма заказа: {{ purchase.sale_amount }}&nbsp;</p>
+
+        <p>{{ discount_text }}</p>
+
+        <p><a href="/orders">Выполненные заказы</a></p>
+
+        <p><a href="/">Список Товаров</a></p>
+    </div>
+</body>
+</html>

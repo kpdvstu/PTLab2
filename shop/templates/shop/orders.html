@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Магазин Канцтоваров</title>
+</head>
+<body>
+    <p><a href="/">Список товаров</a></p>
+    <div>
+        <h3>Список выполненных заказов</h3>
+        <table width='100%'>
+            <tr>
+                <td><p>Номер заказа</p></td>
+                <td><p>Наименование</p></td>
+                <td><p>Цена</p></td>
+                <td><p>Покупатель</p></td>
+                <td><p>Адрес Доставки</p></td>
+                <td><p>Скидка</p></td>
+                <td><p>Итого</p></td>
+                <td></td>
+            </tr>
+            {% for p in purchases %}
+                <tr>
+                    <td><p>{{ p.id }}</p></td>
+                    <td><p>{{ p.product.name }}</p></td>
+                    <td><p>{{ p.product.price }}</p></td>
+                    <td><p>{{ p.person }}</p></td>
+                    <td><p>{{ p.address }}</p></td>
+                    <td><p>{{ p.discount }}%</p></td>
+                    <td><p>{{ p.sale_amount }}</p></td>
+                    <td><p><a href="/order/{{ p.id }}">Посмотреть</a></p></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

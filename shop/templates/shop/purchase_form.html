@@ -11,7 +11,7 @@
             <input type="hidden" value="{{ view.kwargs.product_id }}" name="product" />
             <table>
                 <tr>
-                    <td><p>Введите свое имя </p></td>
+                    <td><p>Введите свое имя: </p></td>
                     <td><input type="text" name="person" /> </td>
                 </tr>
                 <tr>
@@ -20,9 +20,16 @@
                         <input type="text" name="address" />
                     </td>
                 </tr>
+                <tr>
+                    <td><p>Введите Дату Рождения:</p></td>
+                    <td>
+                        <input type="date" name="birthday" value="2021-10-01"/>
+                    </td>
+                </tr>
                 <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
             </table>
         </form>
     </div>
 </body>
 </html>
+
