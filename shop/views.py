@@ -4,6 +4,7 @@ from django.views.generic.edit import CreateView
 
 from .models import Product, Purchase
 
+
 # Create your views here.
 def index(request):
     products = Product.objects.all()
