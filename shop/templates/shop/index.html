@@ -3,11 +3,29 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Товары</title>
+    <style>
+   table {
+    width: 100%; /* Ширина таблицы */
+    border-collapse: collapse; /* Убираем двойные линии между ячейками */
+   }
+   td, th {
+    padding: 3px; /* Поля вокруг содержимого таблицы */
+    border: 1px solid #000; /* Параметры рамки */
+   }
+   th {
+    background: #afd792; /* Цвет фона */
+    color: #333;  /* Цвет текста */
+   }
+   tbody tr:hover {
+    background: #f3bd48; /* Цвет фона при наведении */
+    color: #fff; /* Цвет текста при наведении */
+   }
+  </style>
 </head>
 <body>
     <div>
         <h3>Список</h3>
-        <table>
+        <table border="1">
             <tr>
                 <td><p>Наименование</p></td>
                 <td><p>Цена</p></td>
