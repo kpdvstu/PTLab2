@@ -3,6 +3,7 @@ python:
 - 3.8
 services:
 - postgresql
+-
 install:
 - psql -c 'create database django_db owner postgres;' -U postgres
 - pip install -r requirements.txt
