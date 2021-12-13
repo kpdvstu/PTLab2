@@ -14,5 +14,5 @@ deploy:
   api_key:
     secure: gJRWeLSJN2VEl/KHgq29PEnM7z/o9dMkCZgOUeslogxHF+DI1EVYsE6Dv1SJngiFgzU0VjQb/fX8VbKInooM7p6kg6JlC9Tml6JUuYbwagxtQ0AN3MGPnjRxHCx+fO5rTMsHB+bT/WRpNfO1wW4QZXOsCt2pXtOVh9HSdWkhh11Dqo1EbQNWGeQzzRzkaUw/DP/sNOEuYqHn1Tt/6v79w93uyqjV4tHjh3mb1uPdU+NM8wxqWdek64/g69hQQlbgebKaHVrsa1CxkgXZWYPcFbGUusdoIeNX3UMleZhaj+4CIIfHLCEDwuTq8IQ0tcfON6dzh0rAKfkr8ejqBDR44wIWbc/vrl74VzKfd5fcNxwWEctQH0SrNYKinXW6/wP/v8FVD03Uj/WbX+ZaRQ8kCKAO+dqQ6GbiDXERR0ofsub4Q4I8XZsI8+kJGy4iUDT5ss78/RrsajWvC4FChKkC+A1RbVRJkcqXANdhgSyTL8zt6PafSEJ/KYkUmkbG1w61LqrcTB8qLfw4yTxABxu4C4EcbtF70YUbUJAKymHFlkC3nk39z32ZLT0jpo2aq0OAZuIV8NEBFnXHSM+KQHt4gj/iq4LNRPxux3Hm9sENzm0pTcDS2YwkG/o7pHMO3K8bNturXtq/Y+6fAef6czLI3nKjZgz5XY9RVn9nvnMn0Ds=
   app: webapp-tolochek-shop
-  run: python manage.py runserver && python manage.py migrate && python manage.py loaddata products.yaml
+  run: python3 manage.py migrate
   on: master
