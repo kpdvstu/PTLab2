@@ -1,15 +1,31 @@
 - model: shop.product
   pk: 1
   fields:
-    name: Стол
-    price: 2000
+    name: Стиральная машина
+    price: 35000
 - model: shop.product
   pk: 2
   fields:
-    name: Стул
-    price: 1000
+    name: Посудомоечная машина
+    price: 31000
 - model: shop.product
   pk: 3
   fields:
-    name: Табурет
-    price: 500
+    name: Пылесос
+    price: 15000
+- model: shop.product
+  pk: 4
+  fields:
+    name: Утюг
+    price: 3500
+- model: shop.product
+  pk: 5
+  fields:
+    name: Фен
+    price: 2500
+- model: shop.product
+  pk: 6
+  fields:
+    name: Чайник
+    price: 1500
+
