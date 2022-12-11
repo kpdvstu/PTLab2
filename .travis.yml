@@ -1,14 +1,14 @@
 language: python
 python:
-- 3.9
+  - 3.9
 services:
-- postgresql
+  - postgresql
 install:
-- psql -c 'create database django_db owner postgres;' -U postgres
-- pip install -r requirements.txt
+  - psql -c 'create database django_db owner postgres;' -U postgres
+  - pip install -r requirements.txt
 script:
-- python manage.py migrate
-- python manage.py test shop/tests/
+  - python manage.py migrate
+  - python manage.py test shop/tests/
 deploy:
   provider: heroku
   api_key:
