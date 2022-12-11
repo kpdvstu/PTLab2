@@ -4,23 +4,27 @@ from datetime import datetime
 
 class ProductTestCase(TestCase):
     def setUp(self):
-        Product.objects.create(name="book", price="740")
-        Product.objects.create(name="pencil", price="50")
+        Product.objects.create(name="book", price="740", quantity="3")
+        Product.objects.create(name="pencil", price="50", quantity="1")
 
     def test_correctness_types(self):                   
         self.assertIsInstance(Product.objects.get(name="book").name, str)
         self.assertIsInstance(Product.objects.get(name="book").price, int)
+        self.assertIsInstance(Product.objects.get(name="book").quantity, int)
         self.assertIsInstance(Product.objects.get(name="pencil").name, str)
-        self.assertIsInstance(Product.objects.get(name="pencil").price, int)        
+        self.assertIsInstance(Product.objects.get(name="pencil").price, int)
+        self.assertIsInstance(Product.objects.get(name="pencil").quantity, int)
 
     def test_correctness_data(self):
         self.assertTrue(Product.objects.get(name="book").price == 740)
+        self.assertTrue(Product.objects.get(name="book").quantity > 0)
         self.assertTrue(Product.objects.get(name="pencil").price == 50)
+        self.assertTrue(Product.objects.get(name="pencil").quantity > 0)
 
 
 class PurchaseTestCase(TestCase):
     def setUp(self):
-        self.product_book = Product.objects.create(name="book", price="740")
+        self.product_book = Product.objects.create(name="book", price="740", quantity="3")
         self.datetime = datetime.now()
         Purchase.objects.create(product=self.product_book,
                                 person="Ivanov",
