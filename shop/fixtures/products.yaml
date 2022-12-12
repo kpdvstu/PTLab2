@@ -1,15 +1,30 @@
 - model: shop.product
   pk: 1
   fields:
-    name: Стол
-    price: 2000
+    name: Дерево с кулонами (фарфор, бронза)
+    price: 120000
+    quantity: 3
 - model: shop.product
   pk: 2
   fields:
-    name: Стул
-    price: 1000
+    name: Композиция "Охота с лодки" (агат, серебро)
+    price: 380000
+    quantity: 1
 - model: shop.product
   pk: 3
   fields:
-    name: Табурет
-    price: 500
+    name: Напольные часы "Полководцы" №1
+    price: 900000
+    quantity: 1
+- model: shop.product
+  pk: 4
+  fields:
+    name: Часы напольные "Охота" №1
+    price: 850000
+    quantity: 5
+- model: shop.product
+  pk: 5
+  fields:
+    name: 10 томов "Великие правители Востока"
+    price: 4900000
+    quantity: 1

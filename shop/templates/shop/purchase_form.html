@@ -3,26 +3,107 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Покупка</title>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+        }
+        html {
+            display: table;
+            margin: auto;
+        }
+        .header__logo {
+            font-size: 150%;
+            font-family: 'Kaushan Script', cursive;
+            font-weight: 700;
+            color: #336;
+        }
+        body {
+            display: table-cell;
+            vertical-align: middle;
+            margin: 0;
+            padding: 0 0 200px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header_inner {
+            width: 100%;
+            max-width: 880px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .form_inner {
+            width: 100%;
+            max-width: 880px;
+            margin: 0 auto;
+        }
+        .finner {
+            width: 100%;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        .button {
+            margin: 0;
+            padding: 8px 24px;
+            display: inline-block;
+            vertical-align: baseline;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #0b0c23;
+            background-color: #f9dd79;
+            box-shadow: 0 4px 16px rgba(249, 221, 121, 0.4);
+            border-radius: 24px;
+            transition: background-color 100ms, box-shadow 100ms;
+        }
+
+        .button:focus,
+        .button:hover {
+            background-color: #f9e7a8;
+            box-shadow: 0 4px 32px rgba(249, 221, 121, 0.6);
+        }
+
+        .button:active {
+            background-color: #b69e4b;
+            box-shadow: none;
+        }
+    </style>
 </head>
 <body>
+    <header class="header">
+        <div class="container">
+            <div class="header_inner">
+                <h3 class="header__logo">Покупка</h3>
+            </div>
+        </div>
+    </header>
     <div>
-        <h3>Покупка</h3>
-        <form method="post">{% csrf_token %}
-            <input type="hidden" value="{{ view.kwargs.product_id }}" name="product" />
-            <table>
-                <tr>
-                    <td><p>Введите свое имя </p></td>
-                    <td><input type="text" name="person" /> </td>
-                </tr>
-                <tr>
-                    <td><p>Введите адрес доставки:</p></td>
-                    <td>
-                        <input type="text" name="address" />
-                    </td>
-                </tr>
-                <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
-            </table>
-        </form>
+        <div class="container">
+            <form method="post" class="form_inner">{% csrf_token %}
+                <input type="hidden" value="{{ view.kwargs.product_id }}" name="product" />
+                <table class="finner">
+                    <tr>
+                        <td><p>Введите свое имя </p></td>
+                        <td><input type="text" name="person" /> </td>
+                    </tr>
+                    <tr>
+                        <td><p>Введите адрес доставки:</p></td>
+                        <td>
+                            <input type="text" name="address" />
+                        </td>
+                    </tr>
+                    <tr><td><input class="button" type="submit" value="Отправить" /> </td><td></td></tr>
+                </table>
+            </form>
+        </div>
     </div>
 </body>
 </html>
