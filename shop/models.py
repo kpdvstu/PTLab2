@@ -1,12 +1,13 @@
 from django.db import models
 
-# Create your models here.
 class Product(models.Model):
-    name = models.CharField(max_length=200)
-    price = models.PositiveIntegerField()
+    name = models.CharField(max_length=255)
+    price = models.IntegerField()
+    total_sold = models.PositiveIntegerField(default=0)
+
 
 class Purchase(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    person = models.CharField(max_length=200)
-    address = models.CharField(max_length=200)
-    date = models.DateTimeField(auto_now_add=True)
+    person = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
+    quantity = models.PositiveIntegerField(default=1)

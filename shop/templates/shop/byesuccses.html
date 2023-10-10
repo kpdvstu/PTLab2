@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Покупка совершена</title>
+    <script type="text/javascript">
+        setTimeout(function(){
+            window.location.href = "{% url 'index' %}";
+        }, 1000 );  // Задержка в миллисекундах (1000 мс = 1 с)
+    </script>
+</head>
+<body>
+    <h1>Спасибо за покупку, {{ person }}!</h1>
+    <p>Вы будете перенаправлены через несколько секунд...</p>
+</body>
+</html>
+
