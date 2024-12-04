@@ -1,38 +1,35 @@
 from django.test import TestCase
-from shop.models import Product, Purchase
-from datetime import datetime
+from shop.models import Product, Customer, Purchase
 
-class ProductTestCase(TestCase):
+
+class ModelsTestCase(TestCase):
     def setUp(self):
-        Product.objects.create(name="book", price="740")
-        Product.objects.create(name="pencil", price="50")
+        # Создаем данные для тестов
+        self.customer = Customer.objects.create(name="Иван Иванов", email="ivan@example.com")
+        self.product = Product.objects.create(name="Тестовый товар", price=100)
 
-    def test_correctness_types(self):                   
-        self.assertIsInstance(Product.objects.get(name="book").name, str)
-        self.assertIsInstance(Product.objects.get(name="book").price, int)
-        self.assertIsInstance(Product.objects.get(name="pencil").name, str)
-        self.assertIsInstance(Product.objects.get(name="pencil").price, int)        
+    def test_customer_creation(self):
+        """Тест создания клиента."""
+        customer = Customer.objects.create(name="Мария Петрова", email="maria@example.com")
+        self.assertEqual(customer.name, "Мария Петрова")
+        self.assertEqual(customer.email, "maria@example.com")
+        self.assertEqual(customer.total_purchases, 0)
 
-    def test_correctness_data(self):
-        self.assertTrue(Product.objects.get(name="book").price == 740)
-        self.assertTrue(Product.objects.get(name="pencil").price == 50)
+    def test_product_creation(self):
+        """Тест создания продукта."""
+        product = Product.objects.create(name="Новый товар", price=200)
+        self.assertEqual(product.name, "Новый товар")
+        self.assertEqual(product.price, 200)
 
-
-class PurchaseTestCase(TestCase):
-    def setUp(self):
-        self.product_book = Product.objects.create(name="book", price="740")
-        self.datetime = datetime.now()
-        Purchase.objects.create(product=self.product_book,
-                                person="Ivanov",
-                                address="Svetlaya St.")
-
-    def test_correctness_types(self):
-        self.assertIsInstance(Purchase.objects.get(product=self.product_book).person, str)
-        self.assertIsInstance(Purchase.objects.get(product=self.product_book).address, str)
-        self.assertIsInstance(Purchase.objects.get(product=self.product_book).date, datetime)
-
-    def test_correctness_data(self):
-        self.assertTrue(Purchase.objects.get(product=self.product_book).person == "Ivanov")
-        self.assertTrue(Purchase.objects.get(product=self.product_book).address == "Svetlaya St.")
-        self.assertTrue(Purchase.objects.get(product=self.product_book).date.replace(microsecond=0) == \
-            self.datetime.replace(microsecond=0))
+    def test_purchase_creation(self):
+        """Тест создания покупки."""
+        purchase = Purchase.objects.create(
+            product=self.product,
+            customer=self.customer,
+            address="Ленина 10",
+        )
+        self.assertEqual(purchase.product, self.product)
+        self.assertEqual(purchase.customer, self.customer)
+        self.assertEqual(purchase.address, "Ленина 10")
+        self.assertEqual(purchase.discount, 0)
+        self.assertTrue(purchase.date)
