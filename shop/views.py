@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView
+from .models import Product
 
-from .models import Product, Purchase
 
 # Create your views here.
 def index(request):
@@ -11,11 +11,11 @@ def index(request):
     return render(request, 'shop/index.html', context)
 
 
-class PurchaseCreate(CreateView):
-    model = Purchase
-    fields = ['product', 'person', 'address']
-
-    def form_valid(self, form):
-        self.object = form.save()
-        return HttpResponse(f'Спасибо за покупку, {self.object.person}!')
+#class PurchaseCreate(CreateView):
+#    model = Purchase
+#    fields = ['product', 'person', 'address']
+#
+#    def form_valid(self, form):
+#        self.object = form.save()
+#        return HttpResponse(f'Спасибо за покупку, {self.object.person}!')
 

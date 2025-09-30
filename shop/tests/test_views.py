@@ -1,5 +1,6 @@
 from django.test import TestCase, Client
-from shop.views import PurchaseCreate
+from shop import views
+
 
 class PurchaseCreateTestCase(TestCase):
     def setUp(self):
