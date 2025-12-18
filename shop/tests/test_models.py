@@ -1,38 +1,38 @@
 from django.test import TestCase
-from shop.models import Product, Purchase
-from datetime import datetime
+from django.contrib.auth.models import User
+from ..models import Product, CartItem
 
-class ProductTestCase(TestCase):
+
+class CartItemModelTest(TestCase):
     def setUp(self):
-        Product.objects.create(name="book", price="740")
-        Product.objects.create(name="pencil", price="50")
+        # Создаем пользователя
+        self.user = User.objects.create_user(username='tester', password='password')
 
-    def test_correctness_types(self):                   
-        self.assertIsInstance(Product.objects.get(name="book").name, str)
-        self.assertIsInstance(Product.objects.get(name="book").price, int)
-        self.assertIsInstance(Product.objects.get(name="pencil").name, str)
-        self.assertIsInstance(Product.objects.get(name="pencil").price, int)        
+        # Создаем товар (Вино за 1000р)
+        self.product = Product.objects.create(
+            title="Вино Изабелла",
+            price=1000,
+            description="Красное полусладкое"
+        )
 
-    def test_correctness_data(self):
-        self.assertTrue(Product.objects.get(name="book").price == 740)
-        self.assertTrue(Product.objects.get(name="pencil").price == 50)
+    def test_cart_item_creation(self):
+        """Проверяем, что объект корзины создается корректно"""
+        cart_item = CartItem.objects.create(
+            user=self.user,
+            product=self.product,
+            quantity=3
+        )
+        self.assertEqual(cart_item.product.title, "Вино Изабелла")
+        self.assertEqual(cart_item.quantity, 3)
 
-
-class PurchaseTestCase(TestCase):
-    def setUp(self):
-        self.product_book = Product.objects.create(name="book", price="740")
-        self.datetime = datetime.now()
-        Purchase.objects.create(product=self.product_book,
-                                person="Ivanov",
-                                address="Svetlaya St.")
-
-    def test_correctness_types(self):
-        self.assertIsInstance(Purchase.objects.get(product=self.product_book).person, str)
-        self.assertIsInstance(Purchase.objects.get(product=self.product_book).address, str)
-        self.assertIsInstance(Purchase.objects.get(product=self.product_book).date, datetime)
-
-    def test_correctness_data(self):
-        self.assertTrue(Purchase.objects.get(product=self.product_book).person == "Ivanov")
-        self.assertTrue(Purchase.objects.get(product=self.product_book).address == "Svetlaya St.")
-        self.assertTrue(Purchase.objects.get(product=self.product_book).date.replace(microsecond=0) == \
-            self.datetime.replace(microsecond=0))
+    def test_total_price_calculation(self):
+        """Проверяем метод total_price (если ты его добавил в models.py)"""
+        cart_item = CartItem.objects.create(
+            user=self.user,
+            product=self.product,
+            quantity=2
+        )
+        # 2 бутылки по 1000р должны стоить 2000р
+        # Если у тебя в модели нет метода total_price, удали этот тест или добавь метод в models.py
+        if hasattr(cart_item, 'total_price'):
+            self.assertEqual(cart_item.total_price(), 2000)

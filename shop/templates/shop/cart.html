@@ -1,0 +1,28 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+<h2>Ваша корзина</h2>
+
+{% if cart_items %}
+    <ul style="list-style: none; padding: 0;">
+        {% for item in cart_items %}
+        <li style="border-bottom: 1px solid #eee; padding: 10px 0;">
+            <strong>{{ item.product.title }}</strong>
+            <br>
+            Количество: {{ item.quantity }} шт.
+            <br>
+            Сумма: {{ item.total_price }} руб.
+        </li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <h3>Всего товаров: {{ total_quantity }}</h3>
+    <h3>Общая сумма: {{ total_sum }} руб.</h3>
+{% else %}
+    <p>Ваша корзина пуста.</p>
+{% endif %}
+
+<a href="{% url 'index' %}">
+    <button style="cursor: pointer; padding: 10px; background: #eee;">Вернуться в магазин</button>
+</a>
+{% endblock %}

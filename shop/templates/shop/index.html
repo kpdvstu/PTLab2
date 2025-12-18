@@ -1,26 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Товары</title>
-</head>
-<body>
-    <div>
-        <h3>Список</h3>
-        <table>
-            <tr>
-                <td><p>Наименование</p></td>
-                <td><p>Цена</p></td>
-                <td></td>
-            </tr>
-            {% for p in products %}
-                <tr>
-                    <td><p>{{ p.name }}</p></td>
-                    <td><p>{{ p.price }}</p></td>
-                    <td><p><a href="/buy/{{ p.id }}">Купить</a></p></td>
-                </tr>
-            {% endfor %}
-        </table>
-    </div>
-</body>
-</html>
+{% extends 'shop/base.html' %}
+
+{% block content %}
+  <h1>Товары магазина "АлкоПати"</h1>
+
+  <div class="products-grid">
+    {% for product in products %}
+      <div class="product-card" style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
+        <!-- Если не отображается название, замените product.title на product.name -->
+        <h3>{{ product.title }}</h3>
+        <p>Цена: {{ product.price }} руб.</p>
+
+        <a href="{% url 'add_to_cart' product.pk %}">
+            <button style="cursor: pointer;">В корзину</button>
+        </a>
+      </div>
+    {% empty %}
+        <p>Товаров нет.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

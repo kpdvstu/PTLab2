@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Алкомаркет</title>
+</head>
+<body>
+    <header style="background: #eee; padding: 10px;">
+        <nav>
+            <a href="{% url 'index' %}">Главная</a> |
+            <a href="{% url 'cart' %}">Корзина</a>
+        </nav>
+    </header>
+
+    <main style="padding: 20px;">
+        <!-- Сюда будет вставляться контент из index.html -->
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
