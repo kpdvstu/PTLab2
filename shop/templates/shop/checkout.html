@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Оформление заказа</title>
+</head>
+<body>
+    <h1>Оформление заказа (Магазин одежды)</h1>
+    <form method="post">
+        {% csrf_token %}
+        
+        <label>Имя покупателя:</label>
+        <input type="text" name="person" required><br><br>
+        
+        <label>Адрес доставки:</label>
+        <input type="text" name="address" required><br><br>
+        
+        <h3>Выберите товары для покупки:</h3>
+        {% for product in products %}
+            <div>
+                <input type="checkbox" name="products" value="{{ product.id }}" id="product_{{ product.id }}">
+                <label for="product_{{ product.id }}">
+                    {{ product.name }} - {{ product.price }} руб. (Вид: {{ product.category }})
+                </label>
+            </div>
+        {% endfor %}
+        <br>
+        <button type="submit">Оформить заказ</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,34 @@
+- model: shop.product
+  pk: 1
+  fields:
+    name: "Футболка белая"
+    price: 1000
+    category: "Футболки"
+
+- model: shop.product
+  pk: 2
+  fields:
+    name: "Футболка черная"
+    price: 1200
+    category: "Футболки"
+
+- model: shop.product
+  pk: 3
+  fields:
+    name: "Джинсы синие"
+    price: 3000
+    category: "Джинсы"
+
+- model: shop.product
+  pk: 4
+  fields:
+    name: "Кепка красная"
+    price: 800
+    category: "Головные уборы"
+
+- model: shop.product
+  pk: 5
+  fields:
+    name: "Свитер шерстяной"
+    price: 2500
+    category: "Свитера"
